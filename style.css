@@ -17,6 +17,9 @@ body {
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
+.container:hover{
+  border:2px solid blue;
+}
 
 .input-task {
   display: flex;

@@ -2,7 +2,7 @@ let input = document.querySelector("input");
 let btn = document.querySelector("button");
 let list = document.querySelector("ul");
 btn.addEventListener("click", () => {
-  if (input.value !== "") {
+  if (input.value.trim() !== "") {
     let li = document.createElement("li");
     li.textContent = input.value;
     let deletebtn = document.createElement("button");
@@ -10,7 +10,8 @@ btn.addEventListener("click", () => {
     li.appendChild(deletebtn);
     deletebtn.classList.add("delete-btn");
     list.appendChild(li);
-    deletebtn.addEventListener("click", () => {
+    deletebtn.addEventListener("click", (event) => {
+     event.stopPropagation();
       li.remove();
     });
     li.addEventListener("click", () => {
