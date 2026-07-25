@@ -1,22 +1,56 @@
 let input = document.querySelector("input");
 let btn = document.querySelector("button");
 let list = document.querySelector("ul");
-btn.addEventListener("click", () => {
-  if (input.value.trim() !== "") {
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+function displayTask() {
+  list.innerHTML = "";
+  tasks.forEach((task, index) => {
     let li = document.createElement("li");
-    li.textContent = input.value;
-    let deletebtn = document.createElement("button");
-    deletebtn.textContent = "Delete";
-    li.appendChild(deletebtn);
-    deletebtn.classList.add("delete-btn");
+    li.textContent = task.text;
+    if (task.completed) {
+      li.classList.add("completed");
+    }
+    let editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.classList.add("edit-btn");
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
+    li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
     list.appendChild(li);
-    deletebtn.addEventListener("click", (event) => {
-     event.stopPropagation();
-      li.remove();
-    });
     li.addEventListener("click", () => {
-      li.classList.toggle("completed");
+      task.completed = !task.completed;
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTask();
     });
+    editBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      let updatedTask = prompt("Edit task", task.text);
+      if (updatedTask && updatedTask.trim() !== "") {
+        task.text = updatedTask.trim();
+      }
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTask();
+    });
+    deleteBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      tasks.splice(index, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTask();
+    });
+  });
+}
+btn.addEventListener("click", () => {
+  let value = input.value.trim();
+  if (value !== "") {
+    tasks.push({
+      text:value,
+      completed: false,
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     input.value = "";
+    displayTask();
   }
 });
+displayTask();

@@ -17,8 +17,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
-.container:hover{
-  border:2px solid blue;
+.container:hover {
+  border: 2px solid blue;
 }
 
 .input-task {
@@ -47,7 +47,6 @@ input:focus {
   border-color: #667eea;
 }
 
-
 .add-btn {
   width: 40%;
   height: 35px;
@@ -63,7 +62,6 @@ input:focus {
 .add-btn:hover {
   background-color: #5563c1;
 }
-
 
 /* Task List */
 ul {
@@ -83,26 +81,34 @@ li {
   font-size: 18px;
 }
 
-
-.delete-btn {
-  width: 70px;
-  height: 30px;
-  margin: 0;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background-color: #e74c3c;
-  color: white;
-  font-size: 14px;
-}
-
 .delete-btn:hover {
   background-color: #c0392b;
 }
 
-
-
 .completed {
   text-decoration: line-through;
   color: gray;
+}
+
+.edit-btn {
+  margin-left: 10px;
+  background: rgb(251, 190, 79);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  border-style: none;
+  padding: 8px;
+}
+.edit-btn:hover {
+  background: orange;
+}
+
+.delete-btn {
+  margin-left: 5px;
+  background: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  border-style: none;
+  padding: 8px;
 }
