@@ -84,12 +84,6 @@ li {
 .delete-btn:hover {
   background-color: #c0392b;
 }
-
-.completed {
-  text-decoration: line-through;
-  color: gray;
-}
-
 .edit-btn {
   margin-left: 10px;
   background: rgb(251, 190, 79);

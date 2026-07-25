@@ -9,6 +9,8 @@ function displayTask() {
     li.textContent = task.text;
     if (task.completed) {
       li.classList.add("completed");
+      li.innerHTML = li.innerText + " ✅";
+
     }
     let editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
