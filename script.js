@@ -10,7 +10,6 @@ function displayTask() {
     if (task.completed) {
       li.classList.add("completed");
       li.innerHTML = li.innerText + " ✅";
-
     }
     let editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
@@ -43,16 +42,24 @@ function displayTask() {
     });
   });
 }
-btn.addEventListener("click", () => {
+function addTask() {
   let value = input.value.trim();
   if (value !== "") {
     tasks.push({
-      text:value,
+      text: value,
       completed: false,
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
     input.value = "";
     displayTask();
+  }
+}
+btn.addEventListener("click", () => {
+  addTask();
+});
+input.addEventListener("keydown", () => {
+  if (event.key === "Enter") {
+    addTask();
   }
 });
 displayTask();
